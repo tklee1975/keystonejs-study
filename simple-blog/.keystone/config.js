@@ -50,6 +50,7 @@ var lists = {
     access: import_access.allowAll,
     fields: {
       title: (0, import_fields.text)({ validation: { isRequired: true } }),
+      slug: (0, import_fields.text)({ validation: { isRequired: true } }),
       content: (0, import_fields_document.document)({
         formatting: true,
         layouts: [

@@ -137,6 +137,7 @@ input PostRelateToManyForCreateInput {
 type Post {
   id: ID!
   title: String
+  slug: String
   content: Post_content_Document
   author: User
   tags(where: TagWhereInput! = {}, orderBy: [TagOrderByInput!]! = [], take: Int, skip: Int! = 0): [Tag!]
@@ -157,6 +158,7 @@ input PostWhereInput {
   NOT: [PostWhereInput!]
   id: IDFilter
   title: StringFilter
+  slug: StringFilter
   author: UserWhereInput
   tags: TagManyRelationFilter
 }
@@ -170,10 +172,12 @@ input TagManyRelationFilter {
 input PostOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  slug: OrderDirection
 }
 
 input PostUpdateInput {
   title: String
+  slug: String
   content: JSON
   author: UserRelateToOneForUpdateInput
   tags: TagRelateToManyForUpdateInput
@@ -199,6 +203,7 @@ input PostUpdateArgs {
 
 input PostCreateInput {
   title: String
+  slug: String
   content: JSON
   author: UserRelateToOneForCreateInput
   tags: TagRelateToManyForCreateInput

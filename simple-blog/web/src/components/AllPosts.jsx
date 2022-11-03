@@ -1,6 +1,6 @@
+import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import PostCard from "./PostCard";
-
 const FILMS_QUERY = gql`
 # Write your query or mutation here
 {
@@ -8,6 +8,7 @@ const FILMS_QUERY = gql`
   {
     id   
     title
+    slug
     tags {
       name
     }
@@ -15,15 +16,15 @@ const FILMS_QUERY = gql`
 }
 `;
 
-export default function RecentPostList() {
+export default function AllPosts() {
   const { data, loading, error } = useQuery(FILMS_QUERY);
 
   if (loading) return "Loading...";
   if (error) return <pre>{error.message}</pre>
 
- // console.debug("post", post);
+  // console.debug("post", post);
   const postList = data.posts.map((post) => (
-    
+
     // <pre key={post.id}>{JSON.stringify(post)}</pre>
     <PostCard key={post.id} post={post} />
     // <li key={launch.id}>{launch.mission_name}</li>
@@ -31,8 +32,10 @@ export default function RecentPostList() {
 
   return (
     <div>
-      <ul>{postList}</ul>
+      <h2 style={{textAlign:'center'}}>Keystone6 + ReactJS Demo</h2>
+      <hr/>
+      {postList}
     </div>
   );
-}
 
+}

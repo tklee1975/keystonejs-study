@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+}
+
+.document {
+  min-width: 800px;
+}
+
+.document PRE {
+  background: #333;
+  padding: 1em;
+}
